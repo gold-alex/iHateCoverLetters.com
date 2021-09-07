@@ -44,7 +44,7 @@ function registrationForm() {
   return (
     <div id="registration-form">
     <form onSubmit={registerUser}>
-        <h2 class = "black-text">Register User</h2>
+        <h2 className = "black-text">Register User</h2>
     
         {errors.registrationMessage && (
             <h3 className="alert" role="alert">
@@ -52,27 +52,29 @@ function registrationForm() {
             </h3>
         )}
 
-        <h4 class = "black-text">Email</h4>
+        <h4 className = "black-text">Email</h4>
 
         <TextField 
             type="text"
             name="email"
+            autoComplete="username"
             value={email}
             required
             onChange={(event) => setEmail(event.target.value)} 
         />
 
-        <h4 class = "black-text">Password</h4>
+        <h4 className = "black-text">Password</h4>
 
         <TextField   
             type="password"
             name="password"
+            autoComplete="new-password"
             value={password}
             required
             onChange={(event) => setPassword(event.target.value)} 
         />
 
-        <h4 class = "black-text">Full Address</h4>
+        <h4 className = "black-text">Full Address</h4>
 
         <TextField   
             multiline
@@ -83,7 +85,7 @@ function registrationForm() {
             onChange={(event) => setAddress(event.target.value)} 
         />
 
-        <h4 class = "black-text">Phone Number</h4>
+        <h4 className = "black-text">Phone Number</h4>
 
         <MaskedInput className={phoneinputclasses.root} 
           mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
