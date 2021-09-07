@@ -1,5 +1,4 @@
 
-
 #landing-header-id {
   text-align: center;
 }
@@ -8,14 +7,11 @@
   text-align: center;
 }
 
-.landing-description {
-  width: 50%;
+#landing-description {
+  display: inline-block;
+  width: 70%;
 }
 
-#white-text {
-  color: white;
-}
-
-h1, h4 {
-  color: white;
+.white-text {
+  color: #eaeaea;
 }
