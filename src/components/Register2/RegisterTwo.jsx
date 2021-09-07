@@ -3,22 +3,23 @@ import TextField from '@material-ui/core/TextField';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Register2/RegisterTwo.css';
+import Button from '@material-ui/core/Button';
+import MaskedInput from 'react-text-mask';
 
-const useFormStyles = makeStyles((theme) => ({
+
+const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
     },
   },
 }));
 
 function registrationForm() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
-    const [phone, setPhone] = useState('');
+    const [phone, setPhone] = useState(0);
 
     const errors = useSelector((store) => store.errors);
     const dispatch = useDispatch();
@@ -29,17 +30,20 @@ function registrationForm() {
         dispatch({
         type: 'REGISTER',
         payload: {
-            username: username,
+            username: email,
             password: password,
+            address: address,
+            phone: phone
         },
         });
     }; // end registerUser
 
-  const formClasses = useFormStyles();
+    const bttnclasses = useStyles();
+    const phoneinputclasses = useStyles();
 
   return (
-    <>
-    <form className={formClasses.root} onSubmit={registerUser}>
+    <div id="registration-form">
+    <form onSubmit={registerUser}>
         <h2 class = "black-text">Register User</h2>
     
         {errors.registrationMessage && (
@@ -47,15 +51,17 @@ function registrationForm() {
                 {errors.registrationMessage}
             </h3>
         )}
-        <h4 class = "black-text">Username</h4>
+
+        <h4 class = "black-text">Email</h4>
 
         <TextField 
             type="text"
-            name="username"
-            value={username}
+            name="email"
+            value={email}
             required
-            onChange={(event) => setUsername(event.target.value)} 
+            onChange={(event) => setEmail(event.target.value)} 
         />
+
         <h4 class = "black-text">Password</h4>
 
         <TextField   
@@ -65,8 +71,34 @@ function registrationForm() {
             required
             onChange={(event) => setPassword(event.target.value)} 
         />
+
+        <h4 class = "black-text">Full Address</h4>
+
+        <TextField   
+            multiline
+            type="text"
+            name="address"
+            value={address}
+            required
+            onChange={(event) => setAddress(event.target.value)} 
+        />
+
+        <h4 class = "black-text">Phone Number</h4>
+
+        <MaskedInput className={phoneinputclasses.root} 
+          mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+          placeholderChar={'\u2000'}
+          showMask
+          value={phone}
+          required
+          onChange={(event) => setPhone(event.target.value)} 
+        />
+       
+        <div className={bttnclasses.root}>
+        <Button type = 'submit' variant="contained" color ="primary">Register Now</Button>
+        </div>
     </form>
-    </>
+    </div>
   );
 }
 
