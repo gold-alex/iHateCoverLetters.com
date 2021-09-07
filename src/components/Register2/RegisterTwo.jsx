@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
 
 function registrationForm() {
     const [email, setEmail] = useState('');
+    const [firstname, setfirstName] = useState('');
+    const [lastname, setlastName] = useState('');
     const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState(0);
@@ -30,6 +32,8 @@ function registrationForm() {
         dispatch({
         type: 'REGISTER',
         payload: {
+            firstname,
+            lastname,
             username: email,
             password: password,
             address: address,
@@ -51,6 +55,26 @@ function registrationForm() {
                 {errors.registrationMessage}
             </h3>
         )}
+
+        <h4 className = "black-text">First Name</h4>
+
+        <TextField 
+            type="text"
+            name="firstname"
+            value={firstname}
+            required
+            onChange={(event) => setfirstName(event.target.value)} 
+        />
+
+        <h4 className = "black-text">Last Name</h4>
+
+        <TextField 
+            type="text"
+            name="lastname"
+            value={lastname}
+            required
+            onChange={(event) => setlastName(event.target.value)} 
+        />
 
         <h4 className = "black-text">Email</h4>
 
