@@ -5,6 +5,7 @@ import LazyHero from 'react-lazy-hero';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+
 const useBttnStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -32,12 +33,12 @@ function LandingPage() {
   return (
     <div>
       <LazyHero 
-        isCentered = "true" 
-        minHeight = "95vh "
-        opacity =".75" 
-        transitionDuration="0"	
-        parallaxOffset= '100' 
-        color	= '#000000' 
+        isCentered = {true} 
+        minHeight = "95vh"
+        opacity ={.75}
+        transitionDuration={0}	
+        parallaxOffset= {100} 
+        color = '#000000' 
         imageSrc="https://images.pexels.com/photos/5198264/pexels-photo-5198264.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
 
         {/* <h1 className ="white-text">Welcome to iHateCoverLetters!</h1> */}

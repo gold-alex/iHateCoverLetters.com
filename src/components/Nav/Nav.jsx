@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
@@ -17,20 +17,22 @@ function Nav() {
         {/* If no user is logged in, show these links */}
         {user.id === null &&
           // If there's no user, show login/registration links
+          <>
           <Link className="navLink" to="/login">
             Login / Register
           </Link>
+          </>
         }
 
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
             <Link className="navLink" to="/user">
-              Home
+              Generate
             </Link>
 
             <Link className="navLink" to="/info">
-              Info Page
+              My Cover Letters
             </Link>
 
             <LogOutButton className="navLink" />

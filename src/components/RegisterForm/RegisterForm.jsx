@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import '../Register2/RegisterTwo.css';
+import './RegisterForm.css';
 import Button from '@material-ui/core/Button';
 import MaskedInput from 'react-text-mask';
 
@@ -21,7 +21,7 @@ function registrationForm() {
     const [lastname, setlastName] = useState('');
     const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
-    const [phone, setPhone] = useState(0);
+    const [phone, setPhone] = useState('');
 
     const errors = useSelector((store) => store.errors);
     const dispatch = useDispatch();
