@@ -40,18 +40,18 @@ function LandingPage() {
         color	= '#000000' 
         imageSrc="https://images.pexels.com/photos/5198264/pexels-photo-5198264.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
 
-        <h1 className ="white-text">Welcome to iHateCoverLetters!</h1>
+        {/* <h1 className ="white-text">Welcome to iHateCoverLetters!</h1> */}
     
         <span id = "landing-description">
-        <h4 className ="white-text">
+        <h1 className ="white-text">
           Looking to expedite your job hunt? iHateCoverLetters has you covered!
-        </h4>
+        </h1>
           <h4 className ="white-text">
             Input a cover letter template (or a few), and whenver you need clean, company specific cover letter PDFs generated, simply input the company names and job titles you'd like to generate and we'll do the rest.
           </h4>
-          <h4 className ="white-text">
+          <p className ="white-text">
             Get started by registering or logging in below
-          </h4>
+          </p>
 
 
 
