@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 
 const paperStyles = makeStyles((theme) => ({
@@ -34,6 +35,7 @@ function AddLetter() {
     const paperclasses = paperStyles();
     const bttnclasses = bttnStyles();
     const history = useHistory();
+    const dispatch = useDispatch();
 
     //Local States for each paragraph
     const [templateTitle, settemplateTitle] = React.useState('');
@@ -42,7 +44,8 @@ function AddLetter() {
 
     const sendtexttoServer = () => {
         return (
-            axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, userid: userstore.id})
+            axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, userid: userstore.id}),
+            history.push('/mycoverletters')
         ) 
     }
 

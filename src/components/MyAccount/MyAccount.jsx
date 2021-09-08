@@ -1,13 +1,14 @@
 import '../MyCoverLetters/MyCoverLetters.css'
 import '../MyAccount/MyAccount.css'
 import { useSelector, useDispatch } from 'react-redux';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import MaskedInput from 'react-text-mask';
 import axios from 'axios';
+
 
 const phoneStyles = makeStyles((theme) => ({
     root: {
@@ -47,6 +48,8 @@ function MyAccount() {
     const bttnclasses = bttnStyles();
     const phoneclasses = phoneStyles();
 
+
+
     //creating local state for address and phone number changes
     const [address, setAddress] = React.useState("");
     const [phone, setPhone] = React.useState("");
@@ -61,11 +64,11 @@ function MyAccount() {
 
     //POST to update PHONE
     const updatePhone = () => {
-    axios.put(('/api/user/updatephone'), {phone: phone, userid: userstore.id})
-    dispatch({
-        type: 'FETCH_USER'        
-    })
-}
+        axios.put(('/api/user/updatephone'), {phone: phone, userid: userstore.id})
+        dispatch({
+            type: 'FETCH_USER'        
+        })
+    }   
 
 
     return (

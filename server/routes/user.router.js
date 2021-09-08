@@ -98,7 +98,20 @@ router.get('/usertemplates/:id', (req, res) => {
     });
 });
 
+// Handles DELETE for DELETING a users templates
+router.delete('/delete/:id', (req, res) => {
+  let templateid = req.params.id;
+  console.log(req.params.id)
 
+  const queryText = `DELETE FROM "cover_letters" WHERE "cover_letters".id = $1;`;
+  pool
+    .query(queryText, [templateid])
+    .then((result) => res.sendStatus(200))
+    .catch((err) => {
+      console.log('Template delete failed: ', err);
+      res.sendStatus(500);
+    });
+});
 
 
 // Handles login form authenticate/login POST
