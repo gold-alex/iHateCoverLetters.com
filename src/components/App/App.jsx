@@ -9,15 +9,14 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import MenuAppBar from '../AppBar/AppBar';
-
-
+import Generate from '../Generate/Generate'
 import './App.css';
-import MyCoverLetters from '../AboutPage/MyCoverLetters/MyCoverLetters';
+import MyCoverLetters from '../MyCoverLetters/MyCoverLetters';
+import MyAccount from '../MyAccount/MyAccount';
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +53,22 @@ function App() {
             path="/mycoverletters"
           >
             <MyCoverLetters />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows My Cover Letters else shows LoginPage
+            exact
+            path="/generate"
+          >
+            <Generate/>
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows My Cover Letters else shows LoginPage
+            exact
+            path="/myaccount"
+          >
+            <MyAccount/>
           </ProtectedRoute>
 
           <Route

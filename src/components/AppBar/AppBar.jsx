@@ -51,12 +51,26 @@ function MenuAppBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleGen = () => {
+    setAnchorEl(null);
+    history.push('/generate')
+  }
 
+  const handleMyCoverLetters = () => {
+    setAnchorEl(null);
+    history.push('/mycoverletters')
+  }
+
+  const handleAcc = () => {
+    setAnchorEl(null);
+    history.push('/myaccount')
+  }
+
+  
   const handleLogout = () => {
     setAnchorEl(null);
     dispatch({ type: 'LOGOUT' })
   }
-
 
   return (
     <div className={classes.root}>
@@ -105,9 +119,9 @@ function MenuAppBar() {
               >
                 
                   
-                <MenuItem onClick={handleClose}>Generate</MenuItem>
-                <MenuItem onClick={handleClose}>My Cover Letters</MenuItem>
-                <MenuItem onClick={handleClose}>My Account</MenuItem>
+                <MenuItem onClick={handleGen}>Generate</MenuItem>
+                <MenuItem onClick={handleMyCoverLetters}>My Cover Letters</MenuItem>
+                <MenuItem onClick={handleAcc}>My Account</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
 
 
