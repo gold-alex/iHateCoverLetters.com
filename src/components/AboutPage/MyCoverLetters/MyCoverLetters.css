@@ -1,0 +1,19 @@
+
+
+#mycoverletter-container {
+    padding-top: 100px;
+    text-align: center;
+}
+
+#mycoverletter-heading {
+    font-size: 250%;
+}
+
+#paper-id {
+    display: flex;
+    justify-content: center;
+}
+
+.center {
+    text-align: center;
+}

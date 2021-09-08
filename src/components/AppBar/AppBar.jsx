@@ -13,8 +13,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import '../AppBar/AppBar.css'
-
+import './AppBar.css'
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MenuAppBar() {
+  const history = useHistory();
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -96,8 +97,13 @@ function MenuAppBar() {
               >
                 
                   
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Generate</MenuItem>
+                <MenuItem onClick={handleClose}>My Cover Letters</MenuItem>
+                <MenuItem onClick={handleClose}>My Account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+
+
+
               </Menu>
             </div>
           )}
