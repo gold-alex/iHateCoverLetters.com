@@ -57,7 +57,7 @@ function AddLetter() {
     const onDelete = (templateid) => {
         axios.delete(`/api/user/delete/${templateid}`)
         dispatch({
-          type: 'PULL_TEMPLATES', payload: userstore.id
+          type: 'PULL_TEMPLATES', payload: templateid
         })
     }
 
@@ -73,7 +73,7 @@ function AddLetter() {
                     <h3 className="center">Template Name</h3>
                     <div id = "wrapper-div-template-list">
                       <div id = "template-list-div">
-                        
+
                         {templatestore.map(obj => (
                         <div key = {obj.id}>
                           <li >{obj.template_name} <Button onClick={() => onDelete(obj.id)} style={{ maxHeight: "15px", width: "15%", backgroundColor: "#852508", color: '#ffffff', textTransform: 'none'}}  variant="contained">Delete</Button> </li> 
