@@ -16,3 +16,5 @@ CREATE TABLE "cover_letters" (
    	"user_id" INT REFERENCES "user"
 );
     
+UPDATE "user" 
+SET "address" = 'sdfsdf' WHERE "id" = 1;

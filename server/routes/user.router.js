@@ -34,6 +34,20 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+// Handles PUT for updating user ADDRESS
+router.put('/update', (req, res, next) => {
+
+  const queryText = `INSERT INTO "user" (email, password, first_name, last_name, address, phone_number)
+    VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;`;
+  pool
+    .query(queryText, [username, password, firstname, lastname, address, phone])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('User registration failed: ', err);
+      res.sendStatus(500);
+    });
+});
+
 // Handles login form authenticate/login POST
 router.post('/login', userStrategy.authenticate('local'), (req, res) => {
   res.sendStatus(200);
