@@ -28,7 +28,7 @@ const paperStyles = makeStyles((theme) => ({
 
 
 
-function MyCoverLetters() {
+function Generate() {
     const userstore = useSelector(store => store.user);
     const paperclasses = paperStyles();
     const bttnclasses = bttnStyles();
@@ -57,4 +57,4 @@ function MyCoverLetters() {
     )
 }
 
-export default MyCoverLetters;
+export default Generate;

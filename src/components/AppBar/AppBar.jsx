@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './AppBar.css'
 import {useHistory} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MenuAppBar() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
@@ -49,6 +51,12 @@ function MenuAppBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = () => {
+    setAnchorEl(null);
+    dispatch({ type: 'LOGOUT' })
+  }
+
 
   return (
     <div className={classes.root}>
@@ -100,7 +108,7 @@ function MenuAppBar() {
                 <MenuItem onClick={handleClose}>Generate</MenuItem>
                 <MenuItem onClick={handleClose}>My Cover Letters</MenuItem>
                 <MenuItem onClick={handleClose}>My Account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
 
 
 
