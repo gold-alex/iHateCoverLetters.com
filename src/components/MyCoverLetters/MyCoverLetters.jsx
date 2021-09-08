@@ -4,6 +4,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 
 
 const paperStyles = makeStyles((theme) => ({
@@ -28,17 +31,29 @@ const paperStyles = makeStyles((theme) => ({
 
 
 
-function MyCoverLetters() {
+function AddLetter() {
+    const dispatch = useDispatch();
     const userstore = useSelector(store => store.user);
+    const templatestore = useSelector(store => store.user);
+      // FETCHING USER DETAILS
+      dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id });
+
     const paperclasses = paperStyles();
     const bttnclasses = bttnStyles();
+    const history = useHistory();
+
+    const onAddLetter = () => {
+        return (
+        history.push('/addletter')
+        )
+    }
 
 
     console.log(userstore);
     return (
         <div>
             <div id="mycoverletter-container">
-                <h1 id = "mycoverletter-heading"> {userstore.first_name}'s Cover Letters! </h1>
+                <h1 id = "mycoverletter-heading"> Add Letter </h1>
             </div>
 
             <div id = "paper-id" className={paperclasses.root}>
@@ -48,7 +63,7 @@ function MyCoverLetters() {
             </div>
 
             <div className = {bttnclasses} className="center">
-                <Button variant="contained" color="primary">
+                <Button onClick={onAddLetter} variant="contained" color="primary">
                     Add Cover Letter Template
                 </Button>
             </div>
@@ -57,4 +72,4 @@ function MyCoverLetters() {
     )
 }
 
-export default MyCoverLetters;
+export default AddLetter;

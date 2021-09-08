@@ -11,10 +11,11 @@ CREATE TABLE "user" (
         
 CREATE TABLE "cover_letters" (
    	"id" SERIAL PRIMARY KEY,
-   	"paragraph_one" text,
-   	"paragraph_two" text,
+   	"template_name" VARCHAR(35) NOT NULL,
+   	"paragraph_one" text NOT NULL,
+   	"paragraph_two" text NOT NULL,
    	"user_id" INT REFERENCES "user"
 );
-    
+
 UPDATE "user" 
 SET "address" = 'sdfsdf' WHERE "id" = 1;

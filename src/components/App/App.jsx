@@ -17,15 +17,18 @@ import Generate from '../Generate/Generate'
 import './App.css';
 import MyCoverLetters from '../MyCoverLetters/MyCoverLetters';
 import MyAccount from '../MyAccount/MyAccount';
+import AddLetter from '../AddLetter/AddLetter';
 
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
 
+  //FETCHING USER DETAILS
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+
 
   return (
     <Router>
@@ -69,6 +72,14 @@ function App() {
             path="/myaccount"
           >
             <MyAccount/>
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows My Cover Letters else shows LoginPage
+            exact
+            path="/addletter"
+          >
+            <AddLetter/>
           </ProtectedRoute>
 
           <Route

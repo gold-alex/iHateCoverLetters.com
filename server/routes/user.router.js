@@ -34,6 +34,26 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+// Handles POST request to bank users cover letter temlate in DB
+router.post('/add-cover-letter', (req, res, next) => {
+  const templateTitle = req.body.templateTitle;
+  const paragraphOne = req.body.paragraphOne;
+  const paragraphTwo = req.body.paragraphTwo;
+  const userid = req.body.userid;
+
+
+  const queryText = `INSERT INTO "cover_letters" (template_name, paragraph_one, paragraph_two, user_id)
+    VALUES ($1, $2, $3, $4);`;
+
+  pool
+    .query(queryText, [templateTitle, paragraphOne, paragraphTwo, userid])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('Template addition unsuccessful: ', err);
+      res.sendStatus(500);
+    });
+});
+
 // Handles PUT for updating user ADDRESS
 router.put('/updateaddress', (req, res, next) => {
   let address = req.body.address;
@@ -63,6 +83,22 @@ router.put('/updatephone', (req, res, next) => {
       res.sendStatus(500);
     });
 });
+
+// Handles GET for pulling user TEMPLATES
+router.get('/usertemplates/:id', (req, res) => {
+  let userid = req.params.id;
+
+  const queryText = `Select * from "cover_letters" where "user_id" = $1;`;
+  pool
+    .query(queryText, [userid])
+    .then((result) => res.send(result.rows))
+    .catch((err) => {
+      console.log('Address update failed: ', err);
+      res.sendStatus(500);
+    });
+});
+
+
 
 
 // Handles login form authenticate/login POST
