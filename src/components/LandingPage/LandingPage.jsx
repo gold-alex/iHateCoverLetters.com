@@ -34,7 +34,7 @@ function LandingPage() {
     <div>
       <LazyHero 
         isCentered = {true} 
-        minHeight = "95vh"
+        minHeight = "100vh"
         opacity ={.75}
         transitionDuration={0}	
         parallaxOffset= {100} 

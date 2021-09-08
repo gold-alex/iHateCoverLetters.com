@@ -57,8 +57,16 @@ function MenuAppBar() {
       <AppBar position="fixed">
         <Toolbar>
             
-            <h2 id = "headerid" className="nav-title">iHateCoverLetters</h2>
-            <Typography  variant="h1" className={classes.title}><Link></Link></Typography>
+            <Link to ='/' style={{ textDecoration: 'none' }}> <h2 id = "headerid" className="nav-title">iHateCoverLetters</h2></Link>
+            <Typography  variant="h1" className={classes.title}></Typography>
+
+        {/* if the user.id is undefined or null, display the following */}
+          {user.id == undefined &&
+          // If there's no user, show login/registration links
+            <Link className="navLink" to="/about">
+              About
+            </Link>
+          } 
 
           {/* if user is signed in, display the following */}
             {user.id && (
@@ -93,11 +101,7 @@ function MenuAppBar() {
               </Menu>
             </div>
           )}
-          <Link className="navLink" to="/about">
-            About
-          </Link>
-        </Toolbar>
-        
+          </Toolbar>
       </AppBar>
     </div>
   );

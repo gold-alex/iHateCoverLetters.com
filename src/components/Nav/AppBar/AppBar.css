@@ -1,5 +1,7 @@
 #headerid {
-    color: #eaeaea
+    color: #eaeaea;
+    text-decoration: none;
+
 }
 
 .navLink {
@@ -28,9 +30,8 @@
 .nav-title {
     font-size: 24px;
     font-weight: 700;
-    color: #000000;
+    color: #ffffff;
     padding-left: 10px;
-    margin: 0;
 }
   
 .navLink:hover {
