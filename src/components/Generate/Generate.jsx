@@ -23,6 +23,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import { useHistory } from 'react-router';
+
 
 const StyledMenu = withStyles({
   paper: {
@@ -93,8 +96,8 @@ const paperStyles = makeStyles((theme) => ({
 
 function Generate() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const templatestore = useSelector(store => store.templates);
-    console.log("templatestore", templatestore)
     const paperclasses = paperStyles();
     const bttnclasses = bttnStyles();
     const inputclasses = inputStyles();
@@ -118,11 +121,12 @@ function Generate() {
 
     //Local state for selected template
     const [selectedTemplate, setselectedTemplate] = useState('');
-    console.log("selectedTemplate", selectedTemplate);
+    const [selectedTemplateID, setselectedTemplateID] = useState('');
 
     //On Menu Item Click
-    const menuitemClick = (templateid) => {
-      setselectedTemplate(templateid); 
+    const menuitemClick = (templatename, templateid) => {
+      setselectedTemplate(templatename);
+      setselectedTemplateID(templateid); 
       setAnchorEl(null);
     }
 
@@ -168,7 +172,7 @@ function Generate() {
                   Add 
               </Button>
 
-              {/* Select Template Button */}
+              {/* Select Template Menu */}
               <Button
                 aria-controls="customized-menu"
                 aria-haspopup="true"
@@ -184,16 +188,21 @@ function Generate() {
                   keepMounted
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
-                >                
+                >
+                <StyledMenuItem onClick={()=>history.push('/addletter')}>
+                  <ListItemIcon> <LibraryBooksIcon/> </ListItemIcon>
+                  <ListItemText primary="Add New Template"/> 
+                </StyledMenuItem>
+                
                 {templatestore.map((item, i) => (
                     <StyledMenuItem key = {i}>
-                      <ListItemText primary={item.template_name} onClick={()=>menuitemClick(item.id)}/> 
+                      <ListItemText primary={item.template_name} onClick={()=>menuitemClick(item.template_name, item.id)}/> 
                     </StyledMenuItem>
                 ))}
               </StyledMenu>
             </div>
 
-            <br/>
+            <h4>Current Template: {selectedTemplate} </h4>
             
             <div>
             <div id = "paper-id"  className={paperclasses.root}>
