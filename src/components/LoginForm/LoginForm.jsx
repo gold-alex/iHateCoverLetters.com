@@ -82,9 +82,6 @@ function LoginForm() {
             />
           </Paper>
         </Grid>
-
-     
-     
       </Grid>
 
         <div id = "login-button">
