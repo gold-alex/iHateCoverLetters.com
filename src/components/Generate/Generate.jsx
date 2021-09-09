@@ -25,6 +25,7 @@ import { useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import { useHistory } from 'react-router';
+import CoverLetterGen from '../CoverLetterGen/CoverLetterGen';
 
 
 const StyledMenu = withStyles({
@@ -118,7 +119,7 @@ function Generate() {
 
     //Store
     const userstore = useSelector(store => store.user);
-
+    
     //Local state for selected template
     const [selectedTemplate, setselectedTemplate] = useState('');
     const [selectedTemplateID, setselectedTemplateID] = useState('');
@@ -139,12 +140,31 @@ function Generate() {
     const addcompanyTitle = () => {
         // companytitleArray.push({company: company, jobTitle: jobTitle})
         setcompanytitleArray([...companytitleArray, {company: company, jobTitle: jobTitle}])
-        console.log("button clicked")
-        console.log("This is companytitleArray", companytitleArray);
         setCompany("")
         setjobTitle("")
     }
 
+    
+    const generatePDFs = () => {
+      //get the date 
+      let today = new Date()
+      let date =   (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear() ;
+      //Retrieve paragraphs of selected template
+      let paragraphOne = "";
+      let paragraphTwo = "";
+      for (let i=0; i<templatestore.length; i++) {
+        if (templatestore[i].id == selectedTemplateID) {
+        paragraphOne = templatestore[i].paragraph_one
+        paragraphTwo = templatestore[i].paragraph_two
+        }
+      }
+      companytitleArray.map(item => (
+        CoverLetterGen(paragraphOne, paragraphTwo, item.company, item.jobTitle, date, userstore.first_name, userstore.last_name)
+      ))
+      //Sending over the proper info to jsPDF to be output
+  
+    } 
+    
 
     return (
         <div id = "wrapper-div" style={{marginBottom: "10px"}}>
@@ -230,7 +250,7 @@ function Generate() {
                 </Paper> 
             </div>
 
-            <Button onClick = {addcompanyTitle} variant="contained" color="primary">
+            <Button onClick = {generatePDFs} variant="contained" color="primary">
                   Generate and Download 
             </Button>
             </div>
