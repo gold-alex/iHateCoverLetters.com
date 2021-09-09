@@ -43,10 +43,8 @@ function AddLetter() {
     const [paragraphTwo, setparagraphTwo] = React.useState('');
 
     const sendtexttoServer = () => {
-        return (
             axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, userid: userstore.id}),
             history.push('/mycoverletters')
-        ) 
     }
 
     return (
