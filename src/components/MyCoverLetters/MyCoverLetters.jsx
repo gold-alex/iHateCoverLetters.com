@@ -62,6 +62,8 @@ function AddLetter() {
     }
 
     console.log(userstore);
+    console.log(templatestore);
+
     return (
         <div>
             <div id="mycoverletter-container">

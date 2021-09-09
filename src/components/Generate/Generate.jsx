@@ -12,6 +12,48 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import SendIcon from '@material-ui/icons/Send';
+import { withStyles } from '@material-ui/core/styles';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
 
 const tableStyles = makeStyles({
 
@@ -26,8 +68,8 @@ const paperStyles = makeStyles((theme) => ({
       flexWrap: 'wrap',
       '& > *': {
         margin: theme.spacing(1),
-        width: '58%',
-        height: '20vh',
+        width: 'auto%',
+        height: 'auto',
       },
     },
   }));
@@ -50,11 +92,39 @@ const paperStyles = makeStyles((theme) => ({
   }));
 
 function Generate() {
-    const userstore = useSelector(store => store.user);
+    const dispatch = useDispatch();
+    const templatestore = useSelector(store => store.templates);
+    console.log("templatestore", templatestore)
     const paperclasses = paperStyles();
     const bttnclasses = bttnStyles();
     const inputclasses = inputStyles();
     const tableclasses = tableStyles();
+    //Menu click handling
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
+    //FETCHING TEMPLATES
+    useEffect(() => {
+      dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id });
+    }, []);
+
+    //Store
+    const userstore = useSelector(store => store.user);
+
+    //Local state for selected template
+    const [selectedTemplate, setselectedTemplate] = useState('');
+    console.log("selectedTemplate", selectedTemplate);
+
+    //On Menu Item Click
+    const menuitemClick = (templateid) => {
+      setselectedTemplate(templateid); 
+      setAnchorEl(null);
+    }
 
     //Creating local state to allow us to push an object of company and title to the array on add button click
     const [company, setCompany] = useState("");
@@ -71,41 +141,67 @@ function Generate() {
         setjobTitle("")
     }
 
+
     return (
-        <div>
+        <div id = "wrapper-div" style={{marginBottom: "10px"}}>
             <div id="mycoverletter-container">
                 <h1 id = "mycoverletter-heading"> Generate Cover Letters </h1>
             </div>
 
-            <div>
-              <h2 className="center">Add to Queue</h2>
-            </div>
-
+            <h2 className="center">Add to Queue</h2>
+        
+            {/* Company Input */}
             <div className = "generate-input">
             <TextField value = {company} onChange={(e)=>setCompany(e.target.value)} id="outlined-basic" label="Company" variant="outlined" />
             </div>
 
             <br/>
 
+            {/* Job Title Input */}
             <div className = "generate-input">
             <TextField value = {jobTitle} onChange={(e)=>setjobTitle(e.target.value)} id="outlined-basic" label="Job Title" variant="outlined" />
             </div>
 
-            <div id = "add-button-generate" className = {bttnclasses} className="center">
-                <Button onClick = {addcompanyTitle} variant="contained" color="primary">
-                    Add 
-                </Button>
+            <div id = "add-button-generate" className = {bttnclasses} className="center"> {/* This div includes add button and select template*/}
+              {/* Add Button */}
+              <Button onClick = {addcompanyTitle} variant="contained" color="primary">
+                  Add 
+              </Button>
+
+              {/* Select Template Button */}
+              <Button
+                aria-controls="customized-menu"
+                aria-haspopup="true"
+                variant="contained"
+                color="primary"
+                onClick={handleClick}
+              >
+                Select Template <KeyboardArrowUpIcon/>
+              </Button>
+              <StyledMenu
+                  id="customized-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >                
+                {templatestore.map((item, i) => (
+                    <StyledMenuItem key = {i}>
+                      <ListItemText primary={item.template_name} onClick={()=>menuitemClick(item.id)}/> 
+                    </StyledMenuItem>
+                ))}
+              </StyledMenu>
             </div>
 
             <br/>
-
-            <div id = "paper-id" className={paperclasses.root}>
+            
+            <div>
+            <div id = "paper-id"  className={paperclasses.root}>
                 <Paper elevation={3}>  
-                    <h3 className="center">Table HERE with Orgs and Job Titles</h3>
                     <TableContainer component={Paper}>
                     <Table className={tableclasses.table} aria-label="simple table">
                       <TableHead>
-                        <TableRow>
+                        <TableRow >
                           <TableCell align="center">Company</TableCell>
                           <TableCell align="center">Job Title</TableCell>
                         </TableRow>
@@ -113,14 +209,15 @@ function Generate() {
                       <TableBody>
                         {companytitleArray.map((item, i) => (
                           <TableRow key={i}>
-                            <TableCell align="center" component="th" scope="row">{item.company}</TableCell>
-                            <TableCell align="center">{item.jobTitle}</TableCell>
+                            <TableCell  align="center" component="th" scope="row">{item.company}</TableCell>
+                            <TableCell  align="center">{item.jobTitle}</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
                     </Table>
                   </TableContainer>
                 </Paper> 
+            </div>
             </div>
         </div>
     )
