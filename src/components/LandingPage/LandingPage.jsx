@@ -58,7 +58,7 @@ function LandingPage() {
 
           <div className={classes.root}>
             <Button onClick={onLogin} variant="contained" color="primary">Login</Button>
-            <Button onClick={onRegister} variant="contained" color="#ffffff">Register</Button>
+            <Button onClick={onRegister} variant="contained" style= {{backgroundColor: "#ffffff", color: "#000000"}} >Register</Button>
           </div>
         </span>
       </LazyHero>

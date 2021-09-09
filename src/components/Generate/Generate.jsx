@@ -200,6 +200,8 @@ function Generate() {
                     </StyledMenuItem>
                 ))}
               </StyledMenu>
+             
+
             </div>
 
             <h4>Current Template: {selectedTemplate} </h4>
@@ -227,6 +229,10 @@ function Generate() {
                   </TableContainer>
                 </Paper> 
             </div>
+
+            <Button onClick = {addcompanyTitle} variant="contained" color="primary">
+                  Generate and Download 
+            </Button>
             </div>
         </div>
     )
