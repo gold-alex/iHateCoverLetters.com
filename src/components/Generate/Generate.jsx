@@ -52,7 +52,7 @@ function Generate() {
 
             <div className = {bttnclasses} className="center">
                 <Button variant="contained" color="primary">
-                    Add Cover Letter Template
+                    Add 
                 </Button>
             </div>
 
