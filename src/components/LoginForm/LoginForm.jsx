@@ -45,16 +45,13 @@ function LoginForm() {
 
   return (
     <div id = "login-container">
-      <form className="formPanel" onSubmit={login}>
+      {/* <form className="formPanel" onSubmit={login}> */}
       <Grid container spacing={3}>
 
         <Grid item xs={12}>
           <Paper className={gridclasses.paper}> 
-          <h1 className = "black-text">User Login</h1>
-          {/* APPEND ERROR MESSAGE (IF NEEDED) */}
-          <div className={gridclasses.root}>
-            {errors.registrationMessage && (<h3 className="alert" role="alert">{errors.registrationMessage}</h3>)}
-            </div>
+          <h1 className = "black-text">User Login</h1>  
+          {errors.loginMessage && (<h3 className="alert" role="alert">{errors.loginMessage}</h3>)}      
           </Paper>
         </Grid>
 
@@ -63,7 +60,7 @@ function LoginForm() {
           <h4 className = "black-text">Email Address</h4>
           <TextField
               type="text"
-              fullWidth
+              style={{width: "50%"}}
               name="username"
               required
               value={username}
@@ -77,6 +74,7 @@ function LoginForm() {
           <h4 className = "black-text">Password</h4>
           <TextField
               type="password"
+              style={{width: "50%"}}
               name="password"
               required
               value={password}
@@ -90,9 +88,9 @@ function LoginForm() {
       </Grid>
 
         <div id = "login-button">
-          <Button variant="contained" color ="primary">FFFF</Button>
+          <Button variant="contained" color ="primary" onClick={login}>Login</Button>
         </div>
-      </form>
+      {/* </form> */}
     </div>
   );
 }

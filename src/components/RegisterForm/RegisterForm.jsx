@@ -51,9 +51,9 @@ function registrationForm() {
                   password: password,
                   address: address,
                   phone: phone
-              },
+              }
               });
-        }
+    }
   
 
     //USING STYLES
@@ -64,123 +64,112 @@ function registrationForm() {
   return (
 
     
-    <div id="registration-form">
+    <div id="registration-form">       
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={gridclasses.paper}> 
+            <h1 className = "black-text">Register User</h1>
+            {/* APPEND ERROR MESSAGE (IF NEEDED) */}
+            <div className={gridclasses.root}>
+              {errors.registrationMessage && (<h3 className="alert" role="alert">{errors.registrationMessage}</h3>)}
+              </div>
+            </Paper>
+          </Grid>
 
-
-    <form onSubmit={{registerUser}}>
-       
-        
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper className={gridclasses.paper}> 
-              <h1 className = "black-text">Register User</h1>
-              {/* APPEND ERROR MESSAGE (IF NEEDED) */}
-              <div className={gridclasses.root}>
-                {errors.registrationMessage && (<h3 className="alert" role="alert">{errors.registrationMessage}</h3>)}
-                </div>
-              </Paper>
-            </Grid>
-
-            <Grid item md = {6} xs={12} >
-              <Paper className={gridclasses.paper}>
-                <h4 className = "black-text">First Name</h4>
-                <TextField 
-                    type="text"
-                    name="firstname"
-                    value={firstname}
-                    fullWidth
-                    required
-                    onChange={(event) => setfirstName(event.target.value)}/> 
-                </Paper>
-            </Grid>
-
-            <Grid item md = {6} xs={12}>
-              <Paper className={gridclasses.paper} >    
-                <h4 className = "black-text">Last Name</h4>
-
-                <TextField 
-                    type="text"
-                    name="lastname"
-                    fullWidth
-                    value={lastname}
-                    required
-                    onChange={(event) => setlastName(event.target.value)} 
-                />
-              </Paper>
-            </Grid>
-
-            <Grid item md = {6} xs={12}>
-              <Paper className={gridclasses.paper}>
-
-              <h4 className = "black-text">Full Address</h4>
-              <TextField   
-                  type="text"
-                  name="address"
-                  fullWidth
-                  placeholder="1234 Fake St. Denver, CO 80204"
-                  value={address}
-                  required
-                  onChange={(event) => setAddress(event.target.value)} 
-              />    
-              </Paper>
-            </Grid>
-
-            <Grid item md = {6} xs={12}>
-              <Paper className={gridclasses.paper}>
-
-              <h4 className = "black-text">Email</h4>
+          <Grid item md = {6} xs={12} >
+            <Paper className={gridclasses.paper}>
+              <h4 className = "black-text">First Name</h4>
               <TextField 
                   type="text"
+                  name="firstname"
+                  value={firstname}
                   fullWidth
-                  name="email"
-                  autoComplete="username"
-                  value={email}
                   required
-                  onChange={(event) => setEmail(event.target.value)} 
-              />
+                  onChange={(event) => setfirstName(event.target.value)}/> 
               </Paper>
-            </Grid>
-
-
-            <Grid item md = {6} xs={12}>
-              <Paper className={gridclasses.paper}>
-
-              <h4 className = "black-text">Password</h4>
-              <TextField   
-                  type="password"
-                  name="password"
-                  autoComplete="new-password"
-                  value={password}
-                  required
-                  onChange={(event) => setPassword(event.target.value)} 
-              />
-              </Paper>
-            </Grid>
-
-            <Grid item md = {6} xs={12}>
-              <Paper className={gridclasses.paper}>
-
-              <h4 className = "black-text">Phone Number</h4>
-              <MaskedInput className={phoneinputclasses.root} 
-                  mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-                  placeholderChar={'\u2000'}
-                  showMask
-                  value={phone}
-                  required
-                  onChange={(event) => setPhone(event.target.value)} 
-              />
-              </Paper>
-            </Grid>
           </Grid>
-      
-    
 
-        
-  
-        <div className={bttnclasses.root}>
-        <Button type = 'submit' variant="contained" color ="primary">Register Now</Button>
-        </div>
-    </form>
+          <Grid item md = {6} xs={12}>
+            <Paper className={gridclasses.paper} >    
+              <h4 className = "black-text">Last Name</h4>
+
+              <TextField 
+                  type="text"
+                  name="lastname"
+                  fullWidth
+                  value={lastname}
+                  required
+                  onChange={(event) => setlastName(event.target.value)} 
+              />
+            </Paper>
+          </Grid>
+
+          <Grid item md = {6} xs={12}>
+            <Paper className={gridclasses.paper}>
+
+            <h4 className = "black-text">Full Address</h4>
+            <TextField   
+                type="text"
+                name="address"
+                fullWidth
+                placeholder="1234 Fake St. Denver, CO 80204"
+                value={address}
+                required
+                onChange={(event) => setAddress(event.target.value)} 
+            />    
+            </Paper>
+          </Grid>
+
+          <Grid item md = {6} xs={12}>
+            <Paper className={gridclasses.paper}>
+
+            <h4 className = "black-text">Email</h4>
+            <TextField 
+                type="text"
+                fullWidth
+                name="email"
+                autoComplete="username"
+                value={email}
+                required
+                onChange={(event) => setEmail(event.target.value)} 
+            />
+            </Paper>
+          </Grid>
+
+
+          <Grid item md = {6} xs={12}>
+            <Paper className={gridclasses.paper}>
+
+            <h4 className = "black-text">Password</h4>
+            <TextField   
+                type="password"
+                name="password"
+                autoComplete="new-password"
+                value={password}
+                required
+                onChange={(event) => setPassword(event.target.value)} 
+            />
+            </Paper>
+          </Grid>
+
+          <Grid item md = {6} xs={12}>
+            <Paper className={gridclasses.paper}>
+
+            <h4 className = "black-text">Phone Number</h4>
+            <MaskedInput className={phoneinputclasses.root} 
+                mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+                placeholderChar={'\u2000'}
+                showMask
+                value={phone}
+                required
+                onChange={(event) => setPhone(event.target.value)} 
+            />
+            </Paper>
+          </Grid>
+        </Grid>
+      <div className={bttnclasses.root}>
+      <Button onClick={registerUser} type = 'submit' variant="contained" color ="primary">Register Now</Button>
+      </div>
     </div>
   );
 }
