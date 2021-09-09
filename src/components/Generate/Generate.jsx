@@ -6,7 +6,19 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import '../Generate/Generate.css'
 import { useState } from 'react';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
+const tableStyles = makeStyles({
+
+  table: {
+    minWidth: 400,
+  },
+});
 
 const paperStyles = makeStyles((theme) => ({
     root: {
@@ -37,25 +49,24 @@ const paperStyles = makeStyles((theme) => ({
     },
   }));
 
-
-
 function Generate() {
     const userstore = useSelector(store => store.user);
     const paperclasses = paperStyles();
     const bttnclasses = bttnStyles();
     const inputclasses = inputStyles();
-
-    //Array to collect the info input by user to iterate over with jsPDF later... 
-    let companytitleArray = [];
+    const tableclasses = tableStyles();
 
     //Creating local state to allow us to push an object of company and title to the array on add button click
     const [company, setCompany] = useState("");
     const [jobTitle, setjobTitle] = useState("");
+    //Array to collect the info input by user to iterate over with jsPDF later... 
+    const [companytitleArray, setcompanytitleArray] = useState([])
 
     const addcompanyTitle = () => {
-        companytitleArray.push({company, jobTitle})
+        // companytitleArray.push({company: company, jobTitle: jobTitle})
+        setcompanytitleArray([...companytitleArray, {company: company, jobTitle: jobTitle}])
         console.log("button clicked")
-        console.log("ThiscompanytitleArray", companytitleArray);
+        console.log("This is companytitleArray", companytitleArray);
         setCompany("")
         setjobTitle("")
     }
@@ -91,11 +102,26 @@ function Generate() {
             <div id = "paper-id" className={paperclasses.root}>
                 <Paper elevation={3}>  
                     <h3 className="center">Table HERE with Orgs and Job Titles</h3>
+                    <TableContainer component={Paper}>
+                    <Table className={tableclasses.table} aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell align="center">Company</TableCell>
+                          <TableCell align="center">Job Title</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {companytitleArray.map((item, i) => (
+                          <TableRow key={i}>
+                            <TableCell align="center" component="th" scope="row">{item.company}</TableCell>
+                            <TableCell align="center">{item.jobTitle}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </Paper> 
             </div>
-
-
-
         </div>
     )
 }
