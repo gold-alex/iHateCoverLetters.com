@@ -26,6 +26,8 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import { useHistory } from 'react-router';
 import CoverLetterGen from '../CoverLetterGen/CoverLetterGen';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import GetApp from '@material-ui/icons/GetApp';
 
 
 const StyledMenu = withStyles({
@@ -250,8 +252,8 @@ function Generate() {
                 </Paper> 
             </div>
 
-            <Button onClick = {generatePDFs} variant="contained" color="primary">
-                  Generate and Download 
+            <Button onClick = {generatePDFs} variant="contained" style= {{backgroundColor: "#ad0303", color: "#ffffff" }} color="primary">
+                  Generate and Download <GetApp/>
             </Button>
             </div>
         </div>

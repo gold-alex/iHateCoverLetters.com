@@ -62,12 +62,10 @@ function registrationForm() {
     const gridclasses = gridStyles();
 
   return (
-
-    
     <div id="registration-form">       
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={gridclasses.paper}> 
+            <Paper className={gridclasses.paper}  > 
             <h1 className = "black-text">Register User</h1>
             {/* APPEND ERROR MESSAGE (IF NEEDED) */}
             <div className={gridclasses.root}>

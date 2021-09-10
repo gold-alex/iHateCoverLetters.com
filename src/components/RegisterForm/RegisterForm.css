@@ -3,7 +3,11 @@
 }
 
 #registration-form {
-    text-align: center;
     padding: 100px;
+        text-align: center;
+}
+
+.gridclasses.paper {
+    width: 50%;
 }
 
