@@ -55,8 +55,7 @@ function AddLetter() {
     }
 
     const onDelete = (templateid) => {
-        axios.delete(`/api/user/delete/${templateid}`)
-        dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id })
+        axios.delete(`/api/user/delete/${templateid}`).then(()=>dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id }))
     }
 
     console.log(userstore);
