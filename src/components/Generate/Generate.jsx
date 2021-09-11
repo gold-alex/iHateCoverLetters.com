@@ -25,9 +25,10 @@ import { useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import { useHistory } from 'react-router';
-import CoverLetterGen from '../CoverLetterGen/CoverLetterGen';
+import CoverLetterGen from '../CoverLetterGen (Deprecated)/CoverLetterGen';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import GetApp from '@material-ui/icons/GetApp';
+import PDFDOWNLOAD from '../PDFDOWNLOAD/PDFDOWNLOAD';
 
 
 const StyledMenu = withStyles({
@@ -121,6 +122,7 @@ function Generate() {
 
     //Store
     const userstore = useSelector(store => store.user);
+    console.log(userstore);
     
     //Local state for selected template
     const [selectedTemplate, setselectedTemplate] = useState('');
@@ -148,22 +150,23 @@ function Generate() {
 
     
     const generatePDFs = () => {
-      //get the date 
-      let today = new Date()
-      let date =   (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear() ;
+      
       //Retrieve paragraphs of selected template
       let paragraphOne = "";
       let paragraphTwo = "";
+      
+ 
       for (let i=0; i<templatestore.length; i++) {
         if (templatestore[i].id == selectedTemplateID) {
         paragraphOne = templatestore[i].paragraph_one
         paragraphTwo = templatestore[i].paragraph_two
         }
       }
+      //Sending users info, company specific information, and template selected to pdf generation script
       companytitleArray.map(item => (
-        CoverLetterGen(paragraphOne, paragraphTwo, item.company, item.jobTitle, date, userstore.first_name, userstore.last_name)
+        PDFDOWNLOAD(paragraphOne, paragraphTwo, item.company, item.jobTitle, userstore.first_name, userstore.last_name, userstore.address, userstore.phone, userstore.email)
       ))
-      //Sending over the proper info to jsPDF to be output
+     
   
     } 
     
@@ -190,7 +193,7 @@ function Generate() {
 
             <div id = "add-button-generate" className = {bttnclasses} className="center"> {/* This div includes add button and select template*/}
               {/* Add Button */}
-              <Button onClick = {addcompanyTitle} variant="contained" color="primary">
+              <Button style= {{backgroundColor: "#2aa32a", color: "#ffffff" }} onClick = {addcompanyTitle} variant="contained" color="primary">
                   Add 
               </Button>
 

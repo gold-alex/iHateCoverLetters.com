@@ -43,7 +43,7 @@ function AddLetter() {
     const [paragraphTwo, setparagraphTwo] = React.useState('');
 
     const sendtexttoServer = () => {
-            axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, userid: userstore.id}),
+            axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, userid: userstore.id}).then(()=>dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id })),
             history.push('/mycoverletters')
     }
 
