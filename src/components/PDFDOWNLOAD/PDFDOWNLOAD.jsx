@@ -5,6 +5,12 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 function PDFDOWNLOAD (paragraphOne, paragraphTwo, company, title, firstname, lastname, address, phone, email) {
 
+
+    let paragraphOneReplaced = paragraphOne.replaceAll("*COMPANY*", company).replaceAll("*POSITION*", title);
+    let paragraphTwoReplaced = paragraphTwo.replaceAll("*COMPANY*", company).replaceAll("*POSITION*", title);
+  
+    // let paragraphOneReplaced = paragraphOne.replace("*COMPANY*", company).replace("*POSITION*", title)
+    // let paragraphTwoReplaced = paragraphTwo.replace("*COMPANY*", company).replace("*POSITION*", title)
   
   let today = new Date()
   let date =   (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear() ;
@@ -42,12 +48,12 @@ function PDFDOWNLOAD (paragraphOne, paragraphTwo, company, title, firstname, las
         bold: false
       },
       {
-        text: `${paragraphOne}`,
+        text: `${paragraphOneReplaced}`,
         style: 'prone',
         bold: false
       },
       {
-        text: `${paragraphTwo}`,
+        text: `${paragraphTwoReplaced}`,
         style: 'prtwo',
         bold: false
       },
