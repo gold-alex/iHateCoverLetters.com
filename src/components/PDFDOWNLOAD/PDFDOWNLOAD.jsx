@@ -4,6 +4,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 function PDFDOWNLOAD (paragraphOne, paragraphTwo, company, title, firstname, lastname, address, phone, email) {
+  console.log("this is phone", phone)
 
 
     let paragraphOneReplaced = paragraphOne.replaceAll("*COMPANY*", company).replaceAll("*POSITION*", title);

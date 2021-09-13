@@ -150,24 +150,26 @@ function Generate() {
 
     
     const generatePDFs = () => {
-      
-      //Retrieve paragraphs of selected template
-      let paragraphOne = "";
-      let paragraphTwo = "";
-      
- 
-      for (let i=0; i<templatestore.length; i++) {
-        if (templatestore[i].id == selectedTemplateID) {
-        paragraphOne = templatestore[i].paragraph_one
-        paragraphTwo = templatestore[i].paragraph_two
-        }
+      if (selectedTemplate === '') {
+        alert ("Please select and template and try again")
       }
-      //Sending users info, company specific information, and template selected to pdf generation script
-      companytitleArray.map(item => (
-        PDFDOWNLOAD(paragraphOne, paragraphTwo, item.company, item.jobTitle, userstore.first_name, userstore.last_name, userstore.address, userstore.phone, userstore.email)
-      ))
-     
+      else {
+        //Retrieve paragraphs of selected template
+        let paragraphOne = "";
+        let paragraphTwo = "";
+        
   
+        for (let i=0; i<templatestore.length; i++) {
+          if (templatestore[i].id == selectedTemplateID) {
+          paragraphOne = templatestore[i].paragraph_one
+          paragraphTwo = templatestore[i].paragraph_two
+          }
+        }
+        //Sending users info, company specific information, and template selected to pdf generation script
+        companytitleArray.map(item => (
+          PDFDOWNLOAD(paragraphOne, paragraphTwo, item.company, item.jobTitle, userstore.first_name, userstore.last_name, userstore.address, userstore.phone_number, userstore.email)
+        ))
+      }
     } 
     
 
