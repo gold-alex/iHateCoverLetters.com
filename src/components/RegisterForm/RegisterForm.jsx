@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import MaskedInput from 'react-text-mask';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
+import ReCAPTCHA from "react-google-recaptcha";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +36,7 @@ function registrationForm() {
     const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
+    const [isrecaptchaVerified, setisrecaptchaVerified] = useState(false);
 
     const errors = useSelector((store) => store.errors);
     const dispatch = useDispatch();
@@ -62,7 +63,9 @@ function registrationForm() {
     const gridclasses = gridStyles();
 
   return (
-    <div id="registration-form">       
+    <div id="registration-form"> 
+    <div id ="inline-blockery">
+    <form className="formPanel" onSubmit={registerUser}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Paper className={gridclasses.paper}  > 
@@ -165,9 +168,19 @@ function registrationForm() {
             </Paper>
           </Grid>
         </Grid>
+        <div id = "recaptchaSection">
+          <ReCAPTCHA
+          sitekey="6Le0SWUcAAAAANYQw6TwRDGCfiHyzbRkEOTaSp4-"
+          data-type="image"
+          onChange={()=>setisrecaptchaVerified(true)}
+          />
+        </div>
+       
       <div className={bttnclasses.root}>
-      <Button onClick={registerUser} type = 'submit' variant="contained" color ="primary">Register Now</Button>
+      <Button disabled={!isrecaptchaVerified} type = 'submit' variant="contained" color ="primary">Register Now</Button>
       </div>
+      </form>
+      </div>      
     </div>
   );
 }

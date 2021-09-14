@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core';
 import '../LoginForm/LoginForm.css'
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 const gridStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +24,7 @@ const gridStyles = makeStyles((theme) => ({
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isrecaptchaVerified, setisrecaptchaVerified] = useState(false);
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
   const gridclasses = gridStyles();
@@ -45,7 +48,8 @@ function LoginForm() {
 
   return (
     <div id = "login-container">
-      {/* <form className="formPanel" onSubmit={login}> */}
+      <div id = "inline-stuff">
+      <form className="formPanel" onSubmit={login}>
       <Grid container spacing={3}>
 
         <Grid item xs={12}>
@@ -61,6 +65,7 @@ function LoginForm() {
           <TextField
               type="text"
               style={{width: "50%"}}
+              autoComplete="username"
               name="username"
               required
               value={username}
@@ -74,6 +79,7 @@ function LoginForm() {
           <h4 className = "black-text">Password</h4>
           <TextField
               type="password"
+              autoComplete="current-password"
               style={{width: "50%"}}
               name="password"
               required
@@ -83,11 +89,19 @@ function LoginForm() {
           </Paper>
         </Grid>
       </Grid>
+      <div id = "recaptchaSection">
+        <ReCAPTCHA
+        sitekey="6Le0SWUcAAAAANYQw6TwRDGCfiHyzbRkEOTaSp4-"
+        data-type="image"
+        onChange={()=>setisrecaptchaVerified(true)}
+        />
+      </div>
 
-        <div id = "login-button">
-          <Button variant="contained" color ="primary" onClick={login}>Login</Button>
-        </div>
-      {/* </form> */}
+      <div id = "login-button">
+        <Button disabled={!isrecaptchaVerified} type="submit" variant="contained" color ="primary">Login</Button>
+      </div>
+      </form>
+    </div>
     </div>
   );
 }

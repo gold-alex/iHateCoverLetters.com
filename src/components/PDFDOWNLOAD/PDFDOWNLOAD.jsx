@@ -14,7 +14,9 @@ function PDFDOWNLOAD (paragraphOne, paragraphTwo, company, title, firstname, las
     // let paragraphTwoReplaced = paragraphTwo.replace("*COMPANY*", company).replace("*POSITION*", title)
   
   let today = new Date()
-  let date =   (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear() ;
+  
+  let date =   (today.toLocaleString('default', { month: 'long' })) + ' ' + today.getDate() + ', ' + today.getFullYear() ;
+
   var dd = {
     content: [
       {

@@ -43,8 +43,20 @@ function AddLetter() {
     const [paragraphTwo, setparagraphTwo] = React.useState('');
 
     const sendtexttoServer = () => {
-            axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, userid: userstore.id}).then(()=>dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id })),
-            history.push('/mycoverletters')
+        if (templateTitle === "") {
+            alert("Please provide a name for the template and try again")
+        }
+
+        if (paragraphOne === "") {
+            alert("Please provide text and try again")
+        }
+        if (paragraphTwo === "") {
+            alert("Please provide text and try again")
+        }
+        else if (templateTitle != "" && paragraphOne != "" && paragraphTwo != "") {
+        axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, userid: userstore.id}).then(()=>dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id })),
+        history.push('/mycoverletters')
+    }
     }
 
     return (

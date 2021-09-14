@@ -1,10 +1,29 @@
 
 #login-container {
-    text-align: center;
-    padding: 100px;
+text-align: center;
+    padding-top: 100px;
 }
 
 #login-button {
-    margin-top: 8%;
+    margin-top: 10px;
 line-height: 10px;
+}
+
+
+/* big window rules */
+@media (min-width: 1000px) {
+    #login-container {
+        text-align: center;
+        padding-top: 100px;
+    }
+    #inline-stuff {
+        width: 40%;
+        display: inline-block;
+    }
+}
+#recaptchaSection {
+    padding-top: 10px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }
