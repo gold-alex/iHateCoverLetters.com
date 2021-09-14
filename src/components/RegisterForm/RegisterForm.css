@@ -1,23 +1,21 @@
 .black-text {
-    color: black;
+  color: black;
 }
 #registration-form {
-    padding-top: 100px;
-    text-align: center;
+  padding-top: 100px;
+  text-align: center;
 }
 
 /* .gridclasses.paper {
     width:100%
 } */
 #inline-blockery > form {
-    width: 50%;
+  width: 50%;
 }
 @media only screen and (max-width: 959px) {
-    #inline-blockery > form {
-        width: 90%;
-    }
+  #inline-blockery > form {
+    width: 90%;
   }
-
-
+}
 
 /* #inline-blockery > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-3 */

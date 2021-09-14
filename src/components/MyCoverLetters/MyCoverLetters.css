@@ -1,29 +1,27 @@
-
-
 #mycoverletter-container {
-    padding-top: 100px;
-    text-align: center;
+  padding-top: 100px;
+  text-align: center;
 }
 
 #mycoverletter-heading {
-    font-size: 250%;
+  font-size: 250%;
 }
 
 #paper-id {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 #template-list-div {
-    display: inline-block;
-    text-align: left;
+  display: inline-block;
+  text-align: left;
 }
 
 #wrapper-div-template-list {
-    margin: auto;
-    text-align: center;
+  margin: auto;
+  text-align: center;
 }

@@ -92,7 +92,6 @@ function LoginForm() {
       <div id = "recaptchaSection">
         <ReCAPTCHA
         sitekey="6Le0SWUcAAAAANYQw6TwRDGCfiHyzbRkEOTaSp4-"
-        data-type="image"
         onChange={()=>setisrecaptchaVerified(true)}
         />
       </div>
