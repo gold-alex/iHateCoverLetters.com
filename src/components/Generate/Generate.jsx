@@ -25,7 +25,6 @@ import { useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import { useHistory } from 'react-router';
-import CoverLetterGen from '../CoverLetterGen (Deprecated)/CoverLetterGen';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import GetApp from '@material-ui/icons/GetApp';
 import PDFDOWNLOAD from '../PDFDOWNLOAD/PDFDOWNLOAD';

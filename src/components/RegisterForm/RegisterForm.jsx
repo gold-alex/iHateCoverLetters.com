@@ -35,24 +35,56 @@ function registrationForm() {
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  console.log("thisis phone", phone.length);
   const [isrecaptchaVerified, setisrecaptchaVerified] = useState(false);
 
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
   const registerUser = (event) => {
-    event.preventDefault();
-    dispatch({
-      type: "REGISTER",
-      payload: {
-        firstname,
-        lastname,
-        username: email,
-        password: password,
-        address: address,
-        phone: phone,
-      },
-    });
+    //data validation
+    //check first name and last name
+    if (firstname.length <= 1 || lastname.length <= 1) {
+      alert("Please input a valid first and last name");
+    }
+
+    //check email
+    if (email.length < 1 || !email.includes("@") || !email.includes(".")) {
+      alert("Please provide a valid email and try again");
+    }
+
+    //check address
+    if (address.length < 1) {
+      alert("Please provide a valid address and try again");
+    }
+
+    //check password
+    if (password.length < 8) {
+      alert("Please provide a valid 8+ digit passcode and try again");
+    }
+    //check everything
+    else if (
+      firstname.length > 1 &&
+      lastname.length > 1 &&
+      email.length > 1 &&
+      email.includes("@") &&
+      email.includes(".") &&
+      phone.length > 1 &&
+      password.length > 8
+    ) {
+      event.preventDefault();
+      dispatch({
+        type: "REGISTER",
+        payload: {
+          firstname,
+          lastname,
+          username: email,
+          password: password,
+          address: address,
+          phone: phone,
+        },
+      });
+    }
   };
 
   //USING STYLES
@@ -68,7 +100,6 @@ function registrationForm() {
             <Grid item xs={12}>
               <Paper className={gridclasses.paper}>
                 <h1 className="black-text">Register User</h1>
-                {/* APPEND ERROR MESSAGE (IF NEEDED) */}
                 <div className={gridclasses.root}>
                   {errors.registrationMessage && (
                     <h3 className="alert" role="alert">
