@@ -11,7 +11,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import AboutPage from "../AboutPage/AboutPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginForm from "../LoginForm/LoginForm";
-import RegisterPage from "../RegisterPage/RegisterPage";
+import RegistrationForm from "../RegisterForm/RegisterForm";
 import MenuAppBar from "../AppBar/AppBar";
 import Generate from "../Generate/Generate";
 import "./App.css";
@@ -99,7 +99,7 @@ function App() {
             <Redirect to="/mycoverletters" />
           ) : (
             // Otherwise, show the registration page
-            <RegisterPage />
+            <RegistrationForm />
           )}
         </Route>
 
