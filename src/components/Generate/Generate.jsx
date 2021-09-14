@@ -156,6 +156,7 @@ function Generate() {
         //Retrieve paragraphs of selected template
         let paragraphOne = "";
         let paragraphTwo = "";
+        let paragraphThree = "";
         
   
         for (let i=0; i<templatestore.length; i++) {
@@ -167,7 +168,7 @@ function Generate() {
         }
         //Sending users info, company specific information, and template selected to pdf generation script
         companytitleArray.map(item => (
-          PDFDOWNLOAD(paragraphOne, paragraphTwo, item.company, item.jobTitle, userstore.first_name, userstore.last_name, userstore.address, userstore.phone_number, userstore.email)
+          PDFDOWNLOAD(paragraphOne, paragraphTwo, paragraphThree, item.company, item.jobTitle, userstore.first_name, userstore.last_name, userstore.address, userstore.phone_number, userstore.email)
         ))
       }
     } 

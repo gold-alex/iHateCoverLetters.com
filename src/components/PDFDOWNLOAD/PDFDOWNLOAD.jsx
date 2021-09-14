@@ -124,7 +124,7 @@ function PDFDOWNLOAD(
         fontSize: 12,
         bold: false,
         alignment: "justify",
-        margin: [20, 25, 25, 0],
+        margin: [20, 15, 25, 0],
       },
 
       signature: {
