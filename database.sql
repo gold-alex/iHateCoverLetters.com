@@ -14,6 +14,7 @@ CREATE TABLE "cover_letters" (
    	"template_name" VARCHAR(35) NOT NULL,
    	"paragraph_one" text NOT NULL,
    	"paragraph_two" text NOT NULL,
+	"paragraph_three" text,
    	"user_id" INT REFERENCES "user"
 );
 

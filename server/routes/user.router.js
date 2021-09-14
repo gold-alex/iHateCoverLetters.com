@@ -39,14 +39,15 @@ router.post('/add-cover-letter', (req, res, next) => {
   const templateTitle = req.body.templateTitle;
   const paragraphOne = req.body.paragraphOne;
   const paragraphTwo = req.body.paragraphTwo;
+  const paragraphThree = req.body.paragraphThree;
   const userid = req.body.userid;
 
 
-  const queryText = `INSERT INTO "cover_letters" (template_name, paragraph_one, paragraph_two, user_id)
-    VALUES ($1, $2, $3, $4);`;
+  const queryText = `INSERT INTO "cover_letters" (template_name, paragraph_one, paragraph_two, paragraph_three, user_id)
+    VALUES ($1, $2, $3, $4, $5);`;
 
   pool
-    .query(queryText, [templateTitle, paragraphOne, paragraphTwo, userid])
+    .query(queryText, [templateTitle, paragraphOne, paragraphTwo, paragraphThree, userid])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('Template addition unsuccessful: ', err);

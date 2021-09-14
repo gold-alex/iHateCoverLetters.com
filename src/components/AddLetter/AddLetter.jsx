@@ -30,7 +30,7 @@ const paperStyles = makeStyles((theme) => ({
     },
   }));
 
-function AddLetter() {
+export default function AddLetter() {
     const userstore = useSelector(store => store.user);
     const paperclasses = paperStyles();
     const bttnclasses = bttnStyles();
@@ -41,6 +41,7 @@ function AddLetter() {
     const [templateTitle, settemplateTitle] = React.useState('');
     const [paragraphOne, setparagraphOne] = React.useState('');
     const [paragraphTwo, setparagraphTwo] = React.useState('');
+    const [paragraphThree, setparagraphThree] = React.useState('');
 
     const sendtexttoServer = () => {
         if (templateTitle === "") {
@@ -54,10 +55,11 @@ function AddLetter() {
             alert("Please provide text and try again")
         }
         else if (templateTitle != "" && paragraphOne != "" && paragraphTwo != "") {
-        axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, userid: userstore.id}).then(()=>dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id })),
+        axios.post('/api/user/add-cover-letter', {templateTitle: templateTitle, paragraphOne: paragraphOne, paragraphTwo: paragraphTwo, paragraphThree: paragraphThree, userid: userstore.id}).then(()=>dispatch({ type: 'PULL_TEMPLATES', payload: userstore.id })),
         history.push('/mycoverletters')
+        }
     }
-    }
+   
 
     return (
         <div>
@@ -99,7 +101,19 @@ function AddLetter() {
                         value={paragraphTwo}
                         onChange={(event) => setparagraphTwo(event.target.value)} 
                     />
+                {/* PARAGRAPH THREE INPUT */}
+                    <h5 className="center">Paste Paragraph Three (OPTIONAL) (No indents or spacing)</h5>
+                    <TextField 
+                        variant="outlined"
+                        type="text"
+                        multiline
+                        fullWidth
+                        required
+                        value={paragraphThree}
+                        onChange={(event) => setparagraphThree(event.target.value)} 
+                    />
                 </Paper> 
+                
             </div>
 
             <div className = {bttnclasses} className="center">
@@ -110,5 +124,5 @@ function AddLetter() {
         </div>
     )
 }
+    
 
-export default AddLetter;

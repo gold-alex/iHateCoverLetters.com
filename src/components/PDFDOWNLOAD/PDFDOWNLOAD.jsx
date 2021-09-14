@@ -5,6 +5,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 function PDFDOWNLOAD(
   paragraphOne,
   paragraphTwo,
+  paragraphThree,
   company,
   title,
   firstname,
@@ -13,17 +14,15 @@ function PDFDOWNLOAD(
   phone,
   email
 ) {
-  console.log("this is phone", phone);
-
   let paragraphOneReplaced = paragraphOne
     .replaceAll("*COMPANY*", company)
     .replaceAll("*POSITION*", title);
   let paragraphTwoReplaced = paragraphTwo
     .replaceAll("*COMPANY*", company)
     .replaceAll("*POSITION*", title);
-
-  // let paragraphOneReplaced = paragraphOne.replace("*COMPANY*", company).replace("*POSITION*", title)
-  // let paragraphTwoReplaced = paragraphTwo.replace("*COMPANY*", company).replace("*POSITION*", title)
+  let paragraphThreeReplaced = paragraphThree
+    .replaceAll("*COMPANY*", company)
+    .replaceAll("*POSITION*", title);
 
   let today = new Date();
 
@@ -71,6 +70,11 @@ function PDFDOWNLOAD(
       },
       {
         text: `${paragraphTwoReplaced}`,
+        style: "prtwo",
+        bold: false,
+      },
+      {
+        text: `${paragraphThreeReplaced}`,
         style: "prtwo",
         bold: false,
       },
@@ -131,7 +135,6 @@ function PDFDOWNLOAD(
       },
     },
   };
-
   pdfMake.createPdf(dd).download(`${firstname} ${lastname} - ${company}.pdf`);
 }
 

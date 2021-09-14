@@ -96,17 +96,16 @@ function registrationForm() {
     <div id="registration-form">
       <div id="inline-blockery">
         <form className="formPanel" onSubmit={registerUser}>
+         
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper className={gridclasses.paper}>
                 <h1 className="black-text">Register User</h1>
-                <div className={gridclasses.root}>
-                  {errors.registrationMessage && (
-                    <h3 className="alert" role="alert">
-                      {errors.registrationMessage}
-                    </h3>
-                  )}
-                </div>
+                {errors.registrationMessage && (
+                <h3 className="alert" role="alert">
+                  {errors.registrationMessage}
+                </h3>
+                )}
               </Paper>
             </Grid>
 

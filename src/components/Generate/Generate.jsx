@@ -162,6 +162,7 @@ function Generate() {
           if (templatestore[i].id == selectedTemplateID) {
           paragraphOne = templatestore[i].paragraph_one
           paragraphTwo = templatestore[i].paragraph_two
+          paragraphThree = templatestore[i].paragraph_three
           }
         }
         //Sending users info, company specific information, and template selected to pdf generation script
