@@ -66,11 +66,17 @@ function MenuAppBar() {
     history.push('/myaccount')
   }
 
+  const handleUsage = () => {
+    setAnchorEl(null);
+    history.push('/about')
+  }
   
   const handleLogout = () => {
     setAnchorEl(null);
     dispatch({ type: 'LOGOUT' })
   }
+
+
 
   return (
     <div className={classes.root}>
@@ -122,6 +128,7 @@ function MenuAppBar() {
                 <MenuItem onClick={handleGen}>Generate</MenuItem>
                 <MenuItem onClick={handleMyCoverLetters}>My Cover Letters</MenuItem>
                 <MenuItem onClick={handleAcc}>My Account</MenuItem>
+                <MenuItem onClick={handleUsage}>How to Use</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
 
 
