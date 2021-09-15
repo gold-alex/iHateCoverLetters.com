@@ -42,6 +42,7 @@ function registrationForm() {
   const dispatch = useDispatch();
 
   const registerUser = (event) => {
+    event.preventDefault();
     //data validation
     //check first name and last name
     if (firstname.length <= 1 || lastname.length <= 1) {
