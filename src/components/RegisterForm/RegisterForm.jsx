@@ -73,7 +73,6 @@ function registrationForm() {
       phone.length > 1 &&
       password.length > 8
     ) {
-      event.preventDefault();
       dispatch({
         type: "REGISTER",
         payload: {
