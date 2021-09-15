@@ -14,6 +14,22 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
+        <h1 style={{ marginTop: "45px" }}>About</h1>
+        <p>iHateCoverLetters is a simple cover-letter automation web app by <a href="http://github.com/gold-alex">Alex</a> which utilizes the following technologies:</p>  
+        <div id = "bullet-list">
+        <ul>
+          <li>Node</li>
+          <li>Express</li>
+          <li>React</li>
+          <li>Postgresql</li>
+          <li>Passport</li>
+          <li>pdfMake</li>
+          <li>react-recaptcha</li>
+          <li>heroku</li>
+        </ul>
+        </div>
+
+        <h1 style={{ marginTop: "45px" }}>Instructions</h1>
         <h1 style={{ marginTop: "45px" }}>Step 1: Insert bodies of text</h1>
         <h5>
           Copy and paste the text of one cover letter and iHateCoverLetters will

@@ -2,3 +2,10 @@
     margin-top: 100px;
     text-align: center;
 }
+
+#bullet-list {
+    display: flex; 
+    justify-content: center;
+    text-align: left;
+}
+
