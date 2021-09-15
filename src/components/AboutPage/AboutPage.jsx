@@ -16,7 +16,7 @@ function AboutPage() {
       <div>
         <h1 style={{ marginTop: "45px" }}>Step 1: Insert bodies of text</h1>
         <h5>
-          Simply paste the text of one cover letter and iHateCoverLetters will
+          Copy and paste the text of one cover letter and iHateCoverLetters will
           create and bulk export clean, company specific cover letters in PDF
           format.
         </h5>

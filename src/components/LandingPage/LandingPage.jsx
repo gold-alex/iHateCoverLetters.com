@@ -45,7 +45,7 @@ function LandingPage() {
     
         <span id = "landing-description">
         <h1 className ="white-text">
-          Looking to expedite your job hunt? iHateCoverLetters has you covered!
+          Looking to expedite your job hunt? 
         </h1>
           <h4 className ="white-text">
             Input a cover letter template (or a few), and whenver you need clean, company specific cover letter PDFs generated, simply input the company names and job titles you'd like to generate and we'll do the rest.
