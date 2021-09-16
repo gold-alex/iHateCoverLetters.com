@@ -45,12 +45,8 @@ function App() {
           <AboutPage />
         </Route>
 
-        {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
         <ProtectedRoute
-          // logged in shows My Cover Letters else shows LoginPage
+          // logged in shows My Cover Letters else shows landing page
           exact
           path="/mycoverletters"
         >
@@ -58,7 +54,6 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute
-          // logged in shows My Cover Letters else shows LoginPage
           exact
           path="/generate"
         >
@@ -66,7 +61,6 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute
-          // logged in shows My Cover Letters else shows LoginPage
           exact
           path="/myaccount"
         >
@@ -74,7 +68,6 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute
-          // logged in shows My Cover Letters else shows LoginPage
           exact
           path="/addletter"
         >
