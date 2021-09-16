@@ -10,10 +10,10 @@ Copy and paste the text of one cover letter and iHateCoverLetters will create an
  - Express
  - React
  - PostgreSQL
- - Passport
- - pdfMake
- - react-google-recaptcha (https://www.npmjs.com/package/react-google-recaptcha)
- - Heroku
+ - Passport (http://passportjs.org/)
+ - pdfMake (http://pdfmake.org/)
+ - react-google-recaptcha (https://npmjs.com/package/react-google-recaptcha)
+ - Heroku (https://heroku.com)
 
 # Instructions
 ## Step 1: Insert bodies of text
