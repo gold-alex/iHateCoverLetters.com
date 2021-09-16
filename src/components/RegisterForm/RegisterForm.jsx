@@ -29,6 +29,7 @@ const gridStyles = makeStyles((theme) => ({
 }));
 
 function registrationForm() {
+  //Local state for each of the entries before sending to DB
   const [email, setEmail] = useState("");
   const [firstname, setfirstName] = useState("");
   const [lastname, setlastName] = useState("");
@@ -109,6 +110,7 @@ function registrationForm() {
               </Paper>
             </Grid>
 
+            {/* First Name input */}
             <Grid item md={6} xs={12}>
               <Paper className={gridclasses.paper}>
                 <h4 className="black-text">First Name</h4>
@@ -123,6 +125,7 @@ function registrationForm() {
               </Paper>
             </Grid>
 
+            {/* Last Name input */}
             <Grid item md={6} xs={12}>
               <Paper className={gridclasses.paper}>
                 <h4 className="black-text">Last Name</h4>
@@ -138,6 +141,7 @@ function registrationForm() {
               </Paper>
             </Grid>
 
+            {/* Address input */}
             <Grid item md={6} xs={12}>
               <Paper className={gridclasses.paper}>
                 <h4 className="black-text">Full Address</h4>
@@ -153,6 +157,7 @@ function registrationForm() {
               </Paper>
             </Grid>
 
+            {/* Email input */}
             <Grid item md={6} xs={12}>
               <Paper className={gridclasses.paper}>
                 <h4 className="black-text">Email</h4>
@@ -168,6 +173,7 @@ function registrationForm() {
               </Paper>
             </Grid>
 
+            {/* Password input */}
             <Grid item md={6} xs={12}>
               <Paper className={gridclasses.paper}>
                 <h4 className="black-text">Password</h4>
@@ -182,6 +188,7 @@ function registrationForm() {
               </Paper>
             </Grid>
 
+            {/* Phone input */}
             <Grid item md={6} xs={12}>
               <Paper className={gridclasses.paper}>
                 <h4 className="black-text">Phone Number</h4>
@@ -219,6 +226,7 @@ function registrationForm() {
             />
           </div>
 
+          {/* Register Button */}
           <div className={bttnclasses.root}>
             <Button
               disabled={!isrecaptchaVerified}
