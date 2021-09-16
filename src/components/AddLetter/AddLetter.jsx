@@ -42,7 +42,8 @@ export default function AddLetter() {
     const [paragraphOne, setparagraphOne] = React.useState('');
     const [paragraphTwo, setparagraphTwo] = React.useState('');
     const [paragraphThree, setparagraphThree] = React.useState('');
-
+    
+    //Setting up data validation for template submission
     const sendtexttoServer = () => {
         if (templateTitle === "") {
             alert("Please provide a name for the template and try again")
@@ -115,7 +116,7 @@ export default function AddLetter() {
                 </Paper> 
                 
             </div>
-
+            {/* Button to add template */}
             <div className = {bttnclasses} className="center">
                 <Button onClick={sendtexttoServer} variant="contained" color="primary">
                     Add Template
