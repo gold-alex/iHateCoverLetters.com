@@ -1,6 +1,7 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+const image = require('./line.png');
 
 function PDFDOWNLOAD(
   paragraphOne,
@@ -47,12 +48,9 @@ function PDFDOWNLOAD(
         alignment: "center",
       },
       {
-        table: {
-          headerRows: 1,
-          widths: ["98.5%"],
-          body: [[""], [""]],
-        },
-        layout: "headerLineOnly",
+        image: `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACDQAAAAGAQMAAAAMx85LAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAANQTFRFAAAAp3o92gAAABVJREFUeJxjYBgFo2AUjIJRMAoIAwAGMAABi2lPXwAAAABJRU5ErkJggg==`,
+        alignment: 'center',
+        width: '475',
       },
       {
         text: [`${date} \n`, `${company} \n`, `${title} \n`],

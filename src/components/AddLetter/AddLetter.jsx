@@ -61,7 +61,6 @@ export default function AddLetter() {
         }
     }
    
-
     return (
         <div>
             <div id="mycoverletter-container">
