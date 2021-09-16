@@ -38,8 +38,9 @@ function MenuAppBar() {
   const open = Boolean(anchorEl);
   //Bring in user store to verify if user is signed in 
   const user = useSelector((store) => store.user);
-
-
+  
+  
+  //Setting up event handlers for different menu buttons
   const handleChange = (event) => {
     setAuth(event.target.checked);
   };
@@ -123,16 +124,12 @@ function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
-                
-                  
+                {/* Menu Items */}
                 <MenuItem onClick={handleGen}>Generate</MenuItem>
                 <MenuItem onClick={handleMyCoverLetters}>My Cover Letters</MenuItem>
                 <MenuItem onClick={handleAcc}>My Account</MenuItem>
                 <MenuItem onClick={handleUsage}>How to Use</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
-
-
-
               </Menu>
             </div>
           )}
