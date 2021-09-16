@@ -147,18 +147,17 @@ function Generate() {
         setjobTitle("")
     }
 
-    
+    //Data Validation (empty template selection)
     const generatePDFs = () => {
       if (selectedTemplate === '') {
         alert ("Please select and template and try again")
       }
       else {
-        //Retrieve paragraphs of selected template
+        //Retrieve paragraphs of selected template and set variables to pass on relevant information of each cover letter to PDF Gen
         let paragraphOne = "";
         let paragraphTwo = "";
         let paragraphThree = "";
-        
-  
+    
         for (let i=0; i<templatestore.length; i++) {
           if (templatestore[i].id == selectedTemplateID) {
           paragraphOne = templatestore[i].paragraph_one
@@ -173,7 +172,6 @@ function Generate() {
       }
     } 
     
-
     return (
         <div id = "wrapper-div" style={{marginBottom: "10px"}}>
             <div id="mycoverletter-container">
@@ -232,8 +230,9 @@ function Generate() {
 
             </div>
 
+           
             <h4>Current Template: {selectedTemplate} </h4>
-            
+            {/* Queue of Companies and Job Titles Table */}
             <div>
             <div id = "paper-id"  className={paperclasses.root}>
                 <Paper elevation={3}>  
@@ -258,6 +257,7 @@ function Generate() {
                 </Paper> 
             </div>
 
+            {/* Generate Button */}
             <Button onClick = {generatePDFs} variant="contained" style= {{backgroundColor: "#ad0303", color: "#ffffff" }} color="primary">
                   Generate and Download <GetApp/>
             </Button>
