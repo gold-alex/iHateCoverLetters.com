@@ -66,6 +66,8 @@ export default function AddLetter() {
         <div>
             <div id="mycoverletter-container">
                 <h1 id = "mycoverletter-heading"> Add Letter </h1>
+                <h5> Job Title Tag = *TITLE* </h5>
+                <h5> Company Tag = *COMPANY* </h5>
             </div>
             <div id = "paper-id" className={paperclasses.root}>
                 <Paper elevation={3}>  
