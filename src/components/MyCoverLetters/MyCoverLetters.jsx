@@ -43,11 +43,13 @@ function AddLetter() {
   const paperclasses = paperStyles();
   const bttnclasses = bttnStyles();
   const history = useHistory();
-
+  
+  //Event handler for add cover letter button
   const onAddLetter = () => {
     return history.push("/addletter");
   };
 
+  //DELETE - individual template deletion
   const onDelete = (templateid) => {
     axios
       .delete(`/api/user/delete/${templateid}`)
@@ -66,6 +68,7 @@ function AddLetter() {
         </h1>
       </div>
 
+      //Displaying the templates user has created
       <div id="paper-id" className={paperclasses.root}>
         <Paper elevation={3}>
           <h3 className="center">Template Name</h3>
@@ -95,7 +98,8 @@ function AddLetter() {
           </div>
         </Paper>
       </div>
-
+      
+      //Add cover letter button 
       <div className={bttnclasses} className="center">
         <Button onClick={onAddLetter} variant="contained" color="primary">
           Add Cover Letter Template
