@@ -9,7 +9,6 @@ import { makeStyles } from '@material-ui/core';
 import '../LoginForm/LoginForm.css'
 import ReCAPTCHA from "react-google-recaptcha";
 
-
 const gridStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -29,7 +28,7 @@ function LoginForm() {
   const dispatch = useDispatch();
   const gridclasses = gridStyles();
 
-
+  //Event handler login
   const login = (event) => {
     event.preventDefault();
 
@@ -51,14 +50,13 @@ function LoginForm() {
       <div id = "inline-stuff">
       <form className="formPanel" onSubmit={login}>
       <Grid container spacing={3}>
-
         <Grid item xs={12}>
           <Paper className={gridclasses.paper}> 
           <h1 className = "black-text">User Login</h1>  
           {errors.loginMessage && (<h3 className="alert" role="alert">{errors.loginMessage}</h3>)}      
           </Paper>
         </Grid>
-
+        //Email input
         <Grid item xs={12}>
           <Paper className={gridclasses.paper}> 
           <h4 className = "black-text">Email Address</h4>
@@ -73,7 +71,7 @@ function LoginForm() {
             />
           </Paper>
         </Grid>
-
+        //Password input
         <Grid item xs={12}>
           <Paper className={gridclasses.paper}> 
           <h4 className = "black-text">Password</h4>
@@ -89,13 +87,15 @@ function LoginForm() {
           </Paper>
         </Grid>
       </Grid>
+      //ReCAPTCHA
       <div id = "recaptchaSection">
         <ReCAPTCHA
         sitekey="6Le0SWUcAAAAANYQw6TwRDGCfiHyzbRkEOTaSp4-"
         onChange={()=>setisrecaptchaVerified(true)}
         />
       </div>
-
+      
+      //Login Button
       <div id = "login-button">
         <Button disabled={!isrecaptchaVerified} type="submit" variant="contained" color ="primary">Login</Button>
       </div>
