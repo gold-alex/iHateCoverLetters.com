@@ -68,7 +68,7 @@ function AddLetter() {
         </h1>
       </div>
 
-      //Displaying the templates user has created
+      {/* Displaying the templates user has created */} 
       <div id="paper-id" className={paperclasses.root}>
         <Paper elevation={3}>
           <h3 className="center">Template Name</h3>
@@ -98,8 +98,8 @@ function AddLetter() {
           </div>
         </Paper>
       </div>
-      
-      //Add cover letter button 
+
+      {/* Add Cover Letter Button */} 
       <div className={bttnclasses} className="center">
         <Button onClick={onAddLetter} variant="contained" color="primary">
           Add Cover Letter Template
