@@ -51,12 +51,13 @@ function LandingPage() {
             Get started by registering or logging in below
           </h5>
 
-          // Login Button
+          {/* Login Button */}
           <div className={classes.root}>
             <Button onClick={onLogin} variant="contained" color="primary">
               Login
             </Button>
-          //Register Button
+
+            {/* Register Button */}
             <Button
               onClick={onRegister}
               variant="contained"
