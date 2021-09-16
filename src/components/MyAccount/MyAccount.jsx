@@ -80,6 +80,8 @@ function MyAccount() {
             <form>
               <div id="account-info">
                 <p>Email: {userstore.email}</p>
+
+                //Address and address Update
                 <p>Address: {userstore.address}</p>
                 <TextField
                   type="text"
@@ -94,6 +96,8 @@ function MyAccount() {
                 >
                   Update Address
                 </Button>
+
+                //Phone and Phone Update
                 <p>Phone: {userstore.phone_number}</p>
                 <MaskedInput
                   className={phoneclasses.root}
