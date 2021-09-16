@@ -109,7 +109,6 @@ export default function AddLetter() {
                         type="text"
                         multiline
                         fullWidth
-                        required
                         value={paragraphThree}
                         onChange={(event) => setparagraphThree(event.target.value)} 
                     />
