@@ -56,7 +56,8 @@ function LoginForm() {
           {errors.loginMessage && (<h3 className="alert" role="alert">{errors.loginMessage}</h3>)}      
           </Paper>
         </Grid>
-        //Email input
+
+        {/* Email input */}
         <Grid item xs={12}>
           <Paper className={gridclasses.paper}> 
           <h4 className = "black-text">Email Address</h4>
@@ -71,7 +72,8 @@ function LoginForm() {
             />
           </Paper>
         </Grid>
-        //Password input
+        
+        {/* Password input */}
         <Grid item xs={12}>
           <Paper className={gridclasses.paper}> 
           <h4 className = "black-text">Password</h4>
@@ -87,7 +89,7 @@ function LoginForm() {
           </Paper>
         </Grid>
       </Grid>
-      //ReCAPTCHA
+      {/* ReCAPTCHA */}
       <div id = "recaptchaSection">
         <ReCAPTCHA
         sitekey="6Le0SWUcAAAAANYQw6TwRDGCfiHyzbRkEOTaSp4-"
@@ -95,7 +97,7 @@ function LoginForm() {
         />
       </div>
       
-      //Login Button
+      {/* Login Button */}
       <div id = "login-button">
         <Button disabled={!isrecaptchaVerified} type="submit" variant="contained" color ="primary">Login</Button>
       </div>
