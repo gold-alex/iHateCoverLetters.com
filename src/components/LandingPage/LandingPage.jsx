@@ -16,6 +16,7 @@ const useBttnStyles = makeStyles((theme) => ({
 function LandingPage() {
   const history = useHistory();
 
+  //Event handlers 
   const onLogin = (event) => {
     history.push("/login");
   };
@@ -38,8 +39,6 @@ function LandingPage() {
         color="#000000"
         imageSrc="https://images.pexels.com/photos/5198264/pexels-photo-5198264.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
       >
-        {/* <h1 className ="white-text">Welcome to iHateCoverLetters!</h1> */}
-
         <span id="landing-description">
           <h1 className="white-text">Looking to expedite your job hunt?</h1>
           <p id="description-of-service" className="white-text">
@@ -52,10 +51,12 @@ function LandingPage() {
             Get started by registering or logging in below
           </h5>
 
+          // Login Button
           <div className={classes.root}>
             <Button onClick={onLogin} variant="contained" color="primary">
               Login
             </Button>
+          //Register Button
             <Button
               onClick={onRegister}
               variant="contained"
