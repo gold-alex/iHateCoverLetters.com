@@ -14,15 +14,9 @@ function PDFDOWNLOAD(
   phone,
   email
 ) {
-  let paragraphOneReplaced = paragraphOne
-    .replaceAll("*COMPANY*", company)
-    .replaceAll("*POSITION*", title);
-  let paragraphTwoReplaced = paragraphTwo
-    .replaceAll("*COMPANY*", company)
-    .replaceAll("*POSITION*", title);
-  let paragraphThreeReplaced = paragraphThree
-    .replaceAll("*COMPANY*", company)
-    .replaceAll("*POSITION*", title);
+  let paragraphOneReplaced = paragraphOne.replaceAll(`*COMPANY*`, company).replaceAll(`*TITLE*`, title);
+  let paragraphTwoReplaced = paragraphTwo.replaceAll(`*COMPANY*`, company).replaceAll(`*TITLE*`, title);
+  let paragraphThreeReplaced = paragraphThree.replaceAll(`*COMPANY*`, company).replaceAll(`*TITLE*`, title);
 
   let today = new Date();
 
