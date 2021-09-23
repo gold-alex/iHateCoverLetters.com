@@ -19,7 +19,6 @@ Copy and paste the text of one cover letter and iHateCoverLetters will create an
 # Instructions
 ## Step 1: Insert bodies of text
 
-All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
 
 ![](http://www.ihatecoverletters.com/static/media/InsertBody.6f759818.gif)
 ## Step 2: Add Company or Job Title Tags (Optional) 
