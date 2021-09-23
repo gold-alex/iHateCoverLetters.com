@@ -10,6 +10,7 @@ Copy and paste the text of one cover letter and iHateCoverLetters will create an
  - Express
  - React
  - PostgreSQL
+ - Redux
  - Passport (http://passportjs.org/)
  - pdfMake (http://pdfmake.org/)
  - react-google-recaptcha (https://npmjs.com/package/react-google-recaptcha)
