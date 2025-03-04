@@ -1,4 +1,4 @@
-(Deprecated... I started playing around turning this into a LLM wrapper on the domain but it's far too saturated of a market)
+(Deprecated... I started playing around with updating this by turning this old project into an LLM wrapper but have sinced moved on to other things)
 
 # iHateCoverLetters.com
 
