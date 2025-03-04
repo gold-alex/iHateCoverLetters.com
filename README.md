@@ -1,3 +1,5 @@
+(Deprecated... I started playing around turning this into a LLM wrapper on the domain but it's far too saturated of a market)
+
 # iHateCoverLetters.com
 
 iHateCoverLetters is a simple cover-letter automation web app.
